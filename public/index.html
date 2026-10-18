@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scene Partner</title>
+  <meta name="description" content="Rehearse any scene with AI scene partners who come in on cue. AssemblyAI streaming TTS + Universal-3.6 Pro streaming STT.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎭</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">🎭</span>
+      <div>
+        <h1>Scene Partner</h1>
+        <p class="tag">AI scene partners who come in on cue</p>
+      </div>
+    </div>
+    <label class="scene-pick">
+      <span>Scene</span>
+      <select id="sceneSelect"></select>
+    </label>
+    <div class="powered">
+      <span class="dot"></span> AssemblyAI <b>Streaming TTS</b> · <b>Universal-3.6 Pro</b>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <section class="card">
+        <h2>Cast</h2>
+        <ul id="cast" class="cast"></ul>
+        <p class="hint">Voices from AssemblyAI's TTS library. ▶ to audition.</p>
+      </section>
+
+      <section class="card">
+        <h2>You play</h2>
+        <div id="rolePick" class="role-pick"></div>
+        <label class="toggle"><input type="checkbox" id="offBook" checked> <span>Off-book <em>(hide my lines)</em></span></label>
+        <label class="toggle"><input type="checkbox" id="directions" checked> <span>Read stage directions</span></label>
+      </section>
+
+      <section class="card actions">
+        <button id="tableBtn" class="btn ghost"><span>▶</span> Table read</button>
+        <button id="rehearseBtn" class="btn primary"><span>🎙</span> Rehearse as <b id="roleName">—</b></button>
+        <button id="stopBtn" class="btn stop" hidden>■ Stop</button>
+      </section>
+
+      <section class="card stats" id="renderStats">
+        <h2>Voices</h2>
+        <div class="meter"><div id="renderBar"></div></div>
+        <p id="renderText">Rendering…</p>
+      </section>
+
+      <details class="card paste">
+        <summary>Paste your own scene</summary>
+        <textarea id="pasteBox" spellcheck="false" placeholder="MAYA: Please tell me the 9:40 hasn't left.&#10;DANNY: (without looking up) Left at 9:40. On the dot."></textarea>
+        <button id="pasteBtn" class="btn ghost small">Load scene</button>
+      </details>
+    </aside>
+
+    <section class="stage">
+      <div class="page-wrap">
+        <article id="script" class="page" aria-live="off"></article>
+      </div>
+
+      <footer class="livebar" id="livebar">
+        <div class="mic" id="mic"><div class="orb"><span>🎙</span></div><div class="ring" id="micRing"></div></div>
+        <div class="live-main">
+          <div class="live-status" id="liveStatus">Pick a role and press <b>Rehearse</b>.</div>
+          <div class="live-text" id="liveText"></div>
+        </div>
+        <div class="live-chips" id="liveChips"></div>
+      </footer>
+    </section>
+  </main>
+
+  <div class="modal" id="report" hidden>
+    <div class="sheet">
+      <header>
+        <div>
+          <p class="eyebrow">Line run complete</p>
+          <h2 id="reportTitle">Report</h2>
+        </div>
+        <button class="btn ghost small" id="closeReport">Close</button>
+      </header>
+      <div class="kpis" id="kpis"></div>
+      <div class="notes" id="notes">
+        <div class="notes-head"><span>🎬 Director's notes</span><button class="btn ghost small" id="playNotes">▶ Hear notes</button></div>
+        <p id="notesText">Thinking…</p>
+        <p class="notes-src" id="notesSrc"></p>
+      </div>
+      <ol class="lines" id="reportLines"></ol>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+  <div id="demoLayer" class="demo-layer" hidden></div>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

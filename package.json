@@ -1,0 +1,28 @@
+{
+  "name": "scene-partner",
+  "version": "0.1.0",
+  "description": "Rehearse any scene with AI scene partners that come in on cue. Built on AssemblyAI streaming TTS + Universal-3.6 Pro streaming STT.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "node server/index.mjs",
+    "dev": "nodemon --watch server server/index.mjs",
+    "test": "node --test test/*.test.mjs",
+    "e2e": "node scripts/e2e-demo.mjs",
+    "record": "node scripts/record-demo.mjs demo/build",
+    "build-video": "node scripts/build-video.mjs",
+    "qa": "node scripts/qa-clips.mjs",
+    "voices": "node scripts/voices.mjs"
+  },
+  "engines": {
+    "node": ">=18.17"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "https-proxy-agent": "^7.0.6",
+    "ws": "^8.22.0"
+  },
+  "devDependencies": {
+    "playwright": "^1.56.1"
+  }
+}

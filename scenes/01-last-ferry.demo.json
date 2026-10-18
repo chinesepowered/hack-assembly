@@ -1,0 +1,23 @@
+{
+  "role": "MAYA",
+  "actorVoice": "eve",
+  "note": "Stand-in performance for demo recordings: the simulated actor speaks these through the same Universal-3.6 Pro streaming pipeline a real microphone uses. Keys are MAYA's line numbers (1-based); unlisted lines are spoken as written.",
+  "performances": {
+    "3": [
+      { "say": "You don't understand. She doesn't know I'm here." },
+      { "pause": 2200 },
+      { "say": "I flew in from Denver this morning just to say I'm sorry." }
+    ],
+    "4": [
+      { "say": "For not picking up the phone." },
+      { "pause": 900 },
+      { "say": "Line?" },
+      { "await": "prompt" },
+      { "pause": 300 },
+      { "say": "For three years." }
+    ],
+    "6": [
+      { "say": "I don't even know what I'm gonna say to her." }
+    ]
+  }
+}
